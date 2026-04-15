@@ -14,8 +14,17 @@ export const setupServer = () => {
   app.use(pino());
   app.use(express.json());
 
+
+  app.get('/', (req, res) => {
+    res.json({
+      status: 200,
+      message: 'API is working',
+    });
+  });
+
   app.get('/contacts', getContactsController);
   app.get('/contacts/:contactId', getContactByIdController);
+
 
   app.use((req, res) => {
     res.status(404).json({
