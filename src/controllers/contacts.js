@@ -8,7 +8,26 @@ import {
 } from '../services/contacts.js';
 
 export const getContactsController = async (req, res) => {
-  const contacts = await getAllContacts();
+  const {
+    page = 1,
+    perPage = 10,
+    sortBy = 'name',
+    sortOrder = 'asc',
+    type,
+    isFavourite,
+  } = req.query;
+
+const parsedPage = Math.max(1, Number(page) || 1);
+const parsedPerPage = Math.max(1, Number(perPage) || 10);
+
+  const contacts = await getAllContacts({
+    page: parsedPage,
+    perPage: parsedPerPage,
+    sortBy,
+    sortOrder,
+    type,
+    isFavourite,
+  });
 
   res.status(200).json({
     status: 200,
