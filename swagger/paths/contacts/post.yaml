@@ -51,3 +51,15 @@ responses:
               example: Successfully created a contact!
             data:
               $ref: ../../components/schemas/contact.yaml
+  '400':
+    description: Bad request or validation error
+    content:
+      application/json:
+        schema:
+          $ref: ../../components/schemas/error.yaml
+  '401':
+    description: Authorization header missing
+    content:
+      application/json:
+        schema:
+          $ref: ../../components/schemas/error.yaml
