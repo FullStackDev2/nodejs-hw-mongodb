@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import upload from '../middlewares/upload.js';
 import ctrlWrapper from '../utils/ctrlWrapper.js';
 import {
   getContactsController,
@@ -23,12 +24,14 @@ router.get('/contacts', ctrlWrapper(getContactsController));
 router.get('/contacts/:contactId', isValidId, ctrlWrapper(getContactByIdController));
 router.post(
   '/contacts',
+  upload.single('photo'),
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
 );
 router.patch(
   '/contacts/:contactId',
   isValidId,
+  upload.single('photo'),
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
 );
