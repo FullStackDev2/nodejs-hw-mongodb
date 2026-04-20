@@ -15,7 +15,7 @@ tags:
     description: Authentication operations
 servers:
   - url: http://localhost:3000
-  - url: https://nodejs-hw-mongodb-4-bqlq.onrender.com
+  - url: https://nodejs-hw-mongodb-5-1kuo.onrender.com
 paths:
   /contacts:
     get:
