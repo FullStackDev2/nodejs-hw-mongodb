@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import pino from 'pino-http';
 import cookieParser from 'cookie-parser';
+import swaggerRouter from './routers/swagger.js';
 
 import contactsRouter from './routers/contacts.js';
 import authRouter from './routers/auth.js';
@@ -28,8 +29,10 @@ export const setupServer = () => {
   });
 
   app.use(authRouter);
+  app.use(swaggerRouter);
   app.use(contactsRouter);
 
+  
   app.use(notFoundHandler);
   app.use(errorHandler);
 

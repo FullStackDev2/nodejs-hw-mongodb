@@ -1,0 +1,24 @@
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./contact.yaml
+  page:
+    type: integer
+    example: 1
+  perPage:
+    type: integer
+    example: 10
+  totalItems:
+    type: integer
+    example: 1
+  totalPages:
+    type: integer
+    example: 1
+  hasPreviousPage:
+    type: boolean
+    example: false
+  hasNextPage:
+    type: boolean
+    example: false
