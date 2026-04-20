@@ -2,7 +2,12 @@ import createHttpError from 'http-errors';
 
 const validateBody = (schema) => async (req, res, next) => {
   try {
-    await schema.validateAsync(req.body, {
+    const bodyToValidate =
+      req.file && Object.keys(req.body).length === 0
+        ? { photo: 'uploaded' }
+        : req.body;
+
+    await schema.validateAsync(bodyToValidate, {
       abortEarly: false,
     });
 
